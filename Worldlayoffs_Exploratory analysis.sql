@@ -3,20 +3,21 @@
 -- find the date range  '2020-03-11'-'2023-03-06'
 select min(date),max(date) from layoffs_staging2
 
+-- put the country in the code to help the interactive visulizaiton in Tableau
 -- find the data according to the company   公司
-select company,sum(total_laid_off) as total
+select country,company,sum(total_laid_off) as total
 from layoffs_staging2
-group by company
+group by country,company
 order by total desc
 limit 20;
 
 
 -- find the data according to the industry 行业
-select industry,sum(total_laid_off) as total
+select country,industry,sum(total_laid_off) as total
 from layoffs_staging2
-group by industry
+group by country,industry
 order by total desc
-limit 20;
+
 
 -- find the data according to the country  国家
 select country,sum(total_laid_off) as total
